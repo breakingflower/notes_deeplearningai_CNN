@@ -1,0 +1,13 @@
+{       
+    "\\RR": "\\mathbb{R}",
+
+    "\\trainingset": "(x^{(1)}, y^{(1)})...(x^{(m)}, y^{(m)})",
+
+    "\\ssb": "#1^{[#2]}",
+    "\\floor": "\\lfloor #1 \\rfloor",
+    "\\floorb": "\\Bigg\\lfloor #1 \\Bigg\\rfloor",
+
+    "\\classificationCost": "\\textnormal{Cost} \\quad J = \\frac{1}{m} \\sum_{i=1}^m \\mathcal{L}(\\hat{y}^{(i)}, y^{(i)})",
+
+    "\\mat": "\\begin{bmatrix}#1\\end{bmatrix}"
+}
