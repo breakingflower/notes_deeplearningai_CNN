@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="https://gitcdn.xyz/repo/goessner/mdmath/master/css/vscode-texmath.css">
 
 </head><body>
-<h1 id="week-2-notes-3" data-line="0" class="code-line">Week 2 Notes</h1>
-<h2 id="case-studies-3" data-line="2" class="code-line">Case studies</h2>
+<h1 id="week-2-notes-1" data-line="0" class="code-line">Week 2 Notes</h1>
+<h2 id="case-studies-1" data-line="2" class="code-line">Case studies</h2>
 <ul>
 <li data-line="4" class="code-line">LeNet-5</li>
 <li data-line="5" class="code-line">AlexNet</li>
@@ -18,9 +18,9 @@
 <li data-line="10" class="code-line">ResNet (152)</li>
 <li data-line="11" class="code-line">Inception</li>
 </ul>
-<h2 id="classic-networks-3" data-line="13" class="code-line">Classic Networks</h2>
+<h2 id="classic-networks-1" data-line="13" class="code-line">Classic Networks</h2>
 <p data-line="15" class="code-line">You shuold read them in the order: AlexNet (easy), VGG, LeNet(hard)</p>
-<h3 id="lenet-5-3" data-line="17" class="code-line">LeNet-5</h3>
+<h3 id="lenet-5-1" data-line="17" class="code-line">LeNet-5</h3>
 <ul>
 <li data-line="19" class="code-line">digit recognition</li>
 <li data-line="20" class="code-line">in that age everyone used &quot;valid&quot; convolutions</li>
@@ -33,14 +33,14 @@
 <li data-line="28" class="code-line">width / height goes down, number of channels goes up</li>
 </ul>
 <p data-line="30" class="code-line"><code>conv pool conv pool .... fc fc fc .. output</code></p>
-<h4 id="extra-comments-if-you-want-to-read-lenet-5-3" data-line="32" class="code-line">Extra comments if you want to read LeNet-5</h4>
+<h4 id="extra-comments-if-you-want-to-read-lenet-5-1" data-line="32" class="code-line">Extra comments if you want to read LeNet-5</h4>
 <ul>
 <li data-line="34" class="code-line">use sigmoid/tanh instead of ReLU</li>
 <li data-line="35" class="code-line">typically every filter looks at every channel, but original LeNet-5 will not do this, it will look at single channels and complex stuff because the network was already &quot;big&quot; back then</li>
 <li data-line="36" class="code-line">original LeNet-5 uses sigmoid nonlinearity after pooling.</li>
 </ul>
 <p data-line="38" class="code-line"><img src="lenet5_arch_extended.png" alt="lenet5_arch_extended" class="loading" id="image-hash-8056977708b559e041546de1ba0cb6c220c86222a0d070d8373d997ea787c57a"></p>
-<h3 id="alexnet-3" data-line="40" class="code-line">AlexNet</h3>
+<h3 id="alexnet-1" data-line="40" class="code-line">AlexNet</h3>
 <ul>
 <li data-line="42" class="code-line">Original paper uses 224x224x3 but its actually 227x227</li>
 <li data-line="43" class="code-line">Uses large stride, so dim shrinks quickly</li>
@@ -55,7 +55,7 @@
 </ul>
 <p data-line="50" class="code-line">Architecture:</p>
 <p data-line="52" class="code-line"><img src="alexnet_arch.png" alt="alexnet_arch" class="loading" id="image-hash-d893d0379be4fa7aedc74d51867ec3ed164f623f262f9e27296046e51dfacba9"></p>
-<h4 id="extra-comments-if-you-want-to-read-alexnet-3" data-line="54" class="code-line">Extra comments if you want to read AlexNet</h4>
+<h4 id="extra-comments-if-you-want-to-read-alexnet-1" data-line="54" class="code-line">Extra comments if you want to read AlexNet</h4>
 <ul>
 <li data-line="56" class="code-line">uses complex training schedule on two GPU's</li>
 <li data-line="57" class="code-line">uses Local Response Normalization
@@ -72,7 +72,7 @@
 <li data-line="65" class="code-line">AlexNet was the gamechanger -&gt; 2012.</li>
 <li data-line="66" class="code-line">One of the easier ones to read</li>
 </ul>
-<h3 id="vgg-16-3" data-line="68" class="code-line">VGG-16</h3>
+<h3 id="vgg-16-1" data-line="68" class="code-line">VGG-16</h3>
 <ul>
 <li data-line="70" class="code-line">instead of having massive amounts of parameters, use smaller network</li>
 <li data-line="71" class="code-line"><strong>always</strong> use conv 3x3 filters, stride=1 , same padding</li>
@@ -90,12 +90,12 @@
 <p data-line="83" class="code-line"><code>pattern: if you go deeper, H and W go down, but channels increase</code></p>
 <p data-line="85" class="code-line">Architecture:</p>
 <p data-line="87" class="code-line"><img src="vgg16_arch.png" alt="vgg16_arch" class="loading" id="image-hash-e2520be0193bedb5d2532bcd7e535567910b5d0211bf3583ebde76a23f3ca5fa"></p>
-<h2 id="resnets-residual-networks-3" data-line="89" class="code-line">ResNets: Residual Networks</h2>
+<h2 id="resnets-residual-networks-1" data-line="89" class="code-line">ResNets: Residual Networks</h2>
 <ul>
 <li data-line="91" class="code-line">allows skip connections</li>
 <li data-line="92" class="code-line">very deep &gt; 100 layers</li>
 </ul>
-<h3 id="residual-blocks-3" data-line="94" class="code-line">Residual blocks</h3>
+<h3 id="residual-blocks-1" data-line="94" class="code-line">Residual blocks</h3>
 <ul>
 <li data-line="96" class="code-line"><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover><mover><mrow><msup><mi>a</mi><mrow><mo stretchy="false">[</mo><mi>l</mi><mo stretchy="false">]</mo></mrow></msup><munder><munder><mrow><mo>→</mo><mtext>linear</mtext><mo>→</mo><mtext>ReLU</mtext><mo>→</mo><msup><mi>a</mi><mrow><mo stretchy="false">[</mo><mi>l</mi><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></msup><mo>→</mo><mtext>linear</mtext><mo>→</mo></mrow><mo stretchy="true">⏟</mo></munder><mtext>&quot;shortcut / skip connection&quot;</mtext></munder><mtext>ReLU</mtext><mo>→</mo><msup><mi>a</mi><mrow><mo stretchy="false">[</mo><mi>l</mi><mo>+</mo><mn>2</mn><mo stretchy="false">]</mo></mrow></msup></mrow><mo stretchy="true">⏞</mo></mover><mtext>main path</mtext></mover></mrow><annotation encoding="application/x-tex">\overbrace{\ssb{a}{l} \underbrace{\rightarrow \textnormal{linear} \rightarrow \textnormal{ReLU} \rightarrow \ssb{a}{l+1} \rightarrow \textnormal{linear} \rightarrow}_{\textnormal{&quot;shortcut / skip connection&quot;}} \textnormal{ReLU} \rightarrow \ssb{a}{l+2}}^{\textnormal{main path}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3.9562159999999995em;vertical-align:-1.548em;"></span><span class="mord mover"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.4082159999999995em;"><span style="top:-3.586em;"><span class="pstrut" style="height:3.586em;"></span><span class="mord mover"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5859999999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9379999999999997em;"><span style="top:-1.627em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord textrm mtight">&quot;shortcut / skip connection&quot;</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span class="svg-align" style="top:-2.352em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg width='400em' height='0.548em' viewBox='0 0 400000 548' preserveAspectRatio='xMinYMin slice'><path d='M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
  35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
@@ -124,7 +124,7 @@ c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z'/></svg></span></s
 <ul>
 <li data-line="109" class="code-line">Using Residual Blocks allows to build alot DEEPER networks</li>
 </ul>
-<h3 id="residual-22plain-network22-3" data-line="111" class="code-line">Residual &quot;Plain Network&quot;</h3>
+<h3 id="residual-22plain-network22-1" data-line="111" class="code-line">Residual &quot;Plain Network&quot;</h3>
 <ul>
 <li data-line="113" class="code-line">add all the skip connections to turn each of the blocks into residual blocks</li>
 <li data-line="114" class="code-line">it turns out that if you use GD / ... As you increase the number of layers, the training error decreases but after a while it will go back up.</li>
@@ -132,7 +132,7 @@ c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z'/></svg></span></s
 <li data-line="116" class="code-line">helps with vanishing / explodin gradients</li>
 </ul>
 <p data-line="118" class="code-line"><img src="resnet_plain_network.png" alt="resnet_plain_network" class="loading" id="image-hash-1249d763db49696af77cc7aa6666333dbfac113e62adea2857664c5e7b0417b3"></p>
-<h3 id="why-resnets-work-3" data-line="120" class="code-line">Why ResNets work</h3>
+<h3 id="why-resnets-work-1" data-line="120" class="code-line">Why ResNets work</h3>
 <ul>
 <li data-line="122" class="code-line">making bigger networks hurts the performance of the network</li>
 <li data-line="123" class="code-line">this is not true if you use residual blocks</li>
@@ -160,7 +160,7 @@ c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z'/></svg></span></s
 </li>
 </ul>
 <p data-line="146" class="code-line"><img src="resnet_whytheywork_extra.png" alt="resnet_whytheywork_extra" class="loading" id="image-hash-52a12e3454bb28ab985b00241b21e156e7f615df60ee53200a68a3adc077ae70"></p>
-<h3 id="resnet-on-images-3" data-line="148" class="code-line">ResNet on images</h3>
+<h3 id="resnet-on-images-1" data-line="148" class="code-line">ResNet on images</h3>
 <ul>
 <li data-line="150" class="code-line">start from plain network</li>
 <li data-line="151" class="code-line">add skip connections</li>
@@ -169,7 +169,7 @@ c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z'/></svg></span></s
 <li data-line="154" class="code-line">The last layer is a fully connected layer that makes a prediction using softmax</li>
 </ul>
 <p data-line="156" class="code-line"><img src="resnet_whytheywork_example.png" alt="resnet_whytheywork_example" class="loading" id="image-hash-50fd08584468093cc9683f1f7db70b60a3b2b21ecbf4e5d24f63f1f0d9cb4d17"></p>
-<h2 id="networks-in-networks-and-1x1-convolutions-3" data-line="158" class="code-line">Networks in Networks and 1x1 Convolutions</h2>
+<h2 id="networks-in-networks-and-1x1-convolutions-1" data-line="158" class="code-line">Networks in Networks and 1x1 Convolutions</h2>
 <ul>
 <li data-line="160" class="code-line">1x1 conv = multiplication is matmul with scalar</li>
 <li data-line="161" class="code-line">However, in a high dimensional volume  (c&gt;1), it makes more sense
@@ -199,7 +199,7 @@ c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z'/></svg></span></s
 </li>
 </ul>
 <p data-line="181" class="code-line"><img src="networks_in_networks_and_1x1conv_example.png" alt="networks_in_networks_and_1x1conv_example" class="loading" id="image-hash-db5b224c24bee982e56c60e2039eca7c421087da08c8f3d39b5b46d5a6abb3c3"></p>
-<h2 id="inception-network-3" data-line="183" class="code-line">Inception Network</h2>
+<h2 id="inception-network-1" data-line="183" class="code-line">Inception Network</h2>
 <ul>
 <li data-line="185" class="code-line">arch is more complex, but works really well</li>
 <li data-line="186" class="code-line">instead of choosing what size of convolution you want, do them all</li>
@@ -237,7 +237,7 @@ c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z'/></svg></span></s
 <li data-line="217" class="code-line">as long as you implement this bottleneck layer within reason, you can shrink this layer quite significantly without significantly reducing the performance.</li>
 </ul>
 <p data-line="219" class="code-line"><img src="inceptionnet_motivation_bottleneck.png" alt="inceptionnet_motivation_bottleneck" class="loading" id="image-hash-bb480dd7a4e73093f8525b4ef9ae84be5685f03cb863713f6dca72b0c8caab45"></p>
-<h2 id="building-an-inception-network-3" data-line="221" class="code-line">Building an Inception Network</h2>
+<h2 id="building-an-inception-network-1" data-line="221" class="code-line">Building an Inception Network</h2>
 <ul>
 <li data-line="223" class="code-line">Combine all the blocks</li>
 <li data-line="224" class="code-line">in the pooling layer, remember to use SAME padding for pooling, so that the output height/width can be concatenated with the other outputs. Even after this it will have the same amount of channels! Add one more 1x1 conv layer to shrink the number of channels.</li>
@@ -259,5 +259,97 @@ c124.7 8 235 61.7 331 161 31.3 33.3 59.7 72.7 85 118l7 13v35z'/></svg></span></s
 <li data-line="242" class="code-line">inceptionNet actually refers this meme below, as motivation for the need to build deeper NN</li>
 </ul>
 <p data-line="244" class="code-line"><img src="inceptionnet_meme.png" alt="inceptionnet_meme" class="loading" id="image-hash-4872266c2cfaf8d45a37792b48f3b5ca0e83efc8ae09b0e9d6a5f0538bed9b0d"></p>
+<h2 id="practical-advice-for-using-convnets-1" data-line="246" class="code-line">Practical advice for using ConvNets</h2>
+<h3 id="using-open-source-implementations-1" data-line="248" class="code-line">Using open source implementations</h3>
+<ul>
+<li data-line="250" class="code-line">many networks are difficult to replicate</li>
+<li data-line="251" class="code-line">look online for an open source implementation: use authors implementation!</li>
+<li data-line="252" class="code-line">re-implementation could be a good exercise</li>
+</ul>
+<ol>
+<li data-line="254" class="code-line">pick an architecture that you like</li>
+<li data-line="255" class="code-line">look for open source implementation</li>
+<li data-line="256" class="code-line">build from there</li>
+</ol>
+<ul>
+<li data-line="258" class="code-line">sometimes these network take a very long time to train, we can use transfer learning to use stuff from others</li>
+<li data-line="259" class="code-line">often, starting with open source implementations is a faster way to start on a new project.</li>
+</ul>
+<h3 id="transfer-learning-1" data-line="261" class="code-line">Transfer learning</h3>
+<ul>
+<li data-line="263" class="code-line">sometimes training takes many gpu's and going through the hyperparameter search process also takes long</li>
+</ul>
+<p data-line="265" class="code-line">Example: build pet detector and you want to detect your own cat.</p>
+<ul>
+<li data-line="267" class="code-line">classification problem with 3 classes.
+<ul>
+<li data-line="268" class="code-line">Tigga</li>
+<li data-line="269" class="code-line">Misty</li>
+<li data-line="270" class="code-line">neither</li>
+</ul>
+</li>
+</ul>
+<h4 id="if-your-training-set-is-small-1" data-line="272" class="code-line">If your training set is small</h4>
+<ol>
+<li data-line="274" class="code-line">go online and download an OS implementation + weights trained on for example ImageNet</li>
+<li data-line="275" class="code-line">get rid of the softmax layer (1000 outputs) and create your own softmax unit that outputs either one of the three options (tigga, misty, neither)</li>
+<li data-line="276" class="code-line">freeze all the other layers.</li>
+<li data-line="277" class="code-line">by using other peoples weights you dont need alot of training sample. Use parameters such as <code>trainableParameter=0 or freeze=1</code></li>
+</ol>
+<ul>
+<li data-line="279" class="code-line">One other trick is that you could precompute the activations of one layer and saving them to disk. This way you can train a shallow softmax model to predict. Now there is no need to precompute the activations whenever you take an epoch / pass through your training set.</li>
+</ul>
+<p data-line="281" class="code-line"><img src="practical_advice_transferlearning.png" alt="practical_advice_transferlearning" class="loading" id="image-hash-948586f3e38d6d45c3759ea0079ed1c21e998f49cc806518d4b8a36b55780398"></p>
+<h4 id="if-your-training-set-is-medium-1" data-line="283" class="code-line">If your training set is medium</h4>
+<p data-line="285" class="code-line">If you have a larger labelled dataset</p>
+<ul>
+<li data-line="286" class="code-line">freeze fewer layers and train the later layers.</li>
+<li data-line="287" class="code-line">You can also remove the last layers and add different ones.</li>
+<li data-line="288" class="code-line">essentially, you can lower the amount of layers you freeze, and increase the amount of trainable layers</li>
+</ul>
+<p data-line="290" class="code-line"><img src="practical_advice_transferlearning_mediumdata.png" alt="practical_advice_transferlearning_mediumdata" class="loading" id="image-hash-f8b0f01b78951db9aa1c538d8dfe503f7f7e35ee18131133228d486c5e4b9a4a"></p>
+<h4 id="if-your-training-set-is-large-1" data-line="292" class="code-line">If your training set is large</h4>
+<ul>
+<li data-line="294" class="code-line">train the whole network</li>
+<li data-line="295" class="code-line">use the previous weights as initialization (this replaces random initialization)</li>
+<li data-line="296" class="code-line">The more pictures you have the more layers you can train</li>
+<li data-line="297" class="code-line">this is the extreme case</li>
+</ul>
+<p data-line="299" class="code-line"><img src="practical_advice_transferlearning_largedata.png" alt="practical_advice_transferlearning_largedata" class="loading" id="image-hash-8002a7ab456536237877cbdbb97ec204881cc3d64ff530fe0b266ca7f251b02a"></p>
+<p data-line="301" class="code-line"><code>For many applications you are better off downloading other people's weights. You should actually always do transfer learning unless you have an exceptionally large dataset and a very large computational budget</code></p>
+<h3 id="data-augmentation-1" data-line="303" class="code-line">Data Augmentation</h3>
+<ul>
+<li data-line="305" class="code-line">for the majority of the cv problems, we just want as much data as possible</li>
+<li data-line="306" class="code-line">that means that data augmentation will often help</li>
+</ul>
+<h4 id="common-augmentation-methods-1" data-line="308" class="code-line">Common augmentation methods</h4>
+<p data-line="310" class="code-line">Mostly used</p>
+<ul>
+<li data-line="312" class="code-line">mirroring</li>
+<li data-line="313" class="code-line">random cropping (not perfect, but in practice it works well so long as your random crops are reasonably large subset of your original image)</li>
+</ul>
+<p data-line="315" class="code-line">Less used</p>
+<ul>
+<li data-line="317" class="code-line">rotation</li>
+<li data-line="318" class="code-line">shearing</li>
+<li data-line="319" class="code-line">local warping..</li>
+</ul>
+<p data-line="321" class="code-line"><img src="data_augmentation_common_methods.png" alt="data_augmentation_common_methods" class="loading" id="image-hash-d0e2f15c9f6a3975b447c043418a3ca5153a5059f4617ea77571177864c3efea"></p>
+<ul>
+<li data-line="323" class="code-line">color shifting: make additions / reductions on image channels.
+<ul>
+<li data-line="324" class="code-line">makes new image that is less red/ more green /. ...</li>
+<li data-line="325" class="code-line">in practice, the changing values are drawn from a distribution</li>
+<li data-line="326" class="code-line">changes in color might be possible in the real world, so this makes your algo more robust vs that</li>
+<li data-line="327" class="code-line">there are different ways of sampling RGB
+<ul>
+<li data-line="328" class="code-line">you can do PCA color augmentation</li>
+<li data-line="329" class="code-line">ie. if your image is mainly purple, ie mainly has red and blue tints and very little green, PCA color augmentation will add and subtract alot from red and blue but less from green</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p data-line="331" class="code-line"><img src="data_augmentation_color_shifting.png" alt="data_augmentation_color_shifting" class="loading" id="image-hash-3da2363ef5df7adb592502707821f2c8f3a3d8926bd58160c063ec89b5808d00"></p>
 
 </body></html>

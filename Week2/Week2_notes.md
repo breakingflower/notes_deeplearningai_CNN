@@ -244,3 +244,144 @@ One more detail: there are side branches (green). They take a hidden layer and u
 
 ![inceptionnet_meme](inceptionnet_meme.png)
 
+## Practical advice for using ConvNets
+
+### Using open source implementations
+
+* many networks are difficult to replicate
+* look online for an open source implementation: use authors implementation!
+* re-implementation could be a good exercise
+
+1) pick an architecture that you like
+2) look for open source implementation
+3) build from there
+
+* sometimes these network take a very long time to train, we can use transfer learning to use stuff from others
+* often, starting with open source implementations is a faster way to start on a new project.
+
+### Transfer learning
+
+* sometimes training takes many gpu's and going through the hyperparameter search process also takes long
+
+Example: build pet detector and you want to detect your own cat.
+
+* classification problem with 3 classes. 
+    * Tigga 
+    * Misty
+    * neither
+
+#### If your training set is small
+
+1) go online and download an OS implementation + weights trained on for example ImageNet
+2) get rid of the softmax layer (1000 outputs) and create your own softmax unit that outputs either one of the three options (tigga, misty, neither)
+3) freeze all the other layers.
+4) by using other peoples weights you dont need alot of training sample. Use parameters such as `trainableParameter=0 or freeze=1`
+
+* One other trick is that you could precompute the activations of one layer and saving them to disk. This way you can train a shallow softmax model to predict. Now there is no need to precompute the activations whenever you take an epoch / pass through your training set.
+
+![practical_advice_transferlearning](practical_advice_transferlearning.png)
+
+#### If your training set is medium
+
+If you have a larger labelled dataset
+* freeze fewer layers and train the later layers.
+* You can also remove the last layers and add different ones.
+* essentially, you can lower the amount of layers you freeze, and increase the amount of trainable layers
+
+![practical_advice_transferlearning_mediumdata](practical_advice_transferlearning_mediumdata.png)
+
+#### If your training set is large
+
+* train the whole network
+* use the previous weights as initialization (this replaces random initialization)
+* The more pictures you have the more layers you can train
+* this is the extreme case
+
+![practical_advice_transferlearning_largedata](practical_advice_transferlearning_largedata.png)
+
+`For many applications you are better off downloading other people's weights. You should actually always do transfer learning unless you have an exceptionally large dataset and a very large computational budget`
+
+### Data Augmentation
+
+* for the majority of the cv problems, we just want as much data as possible
+* that means that data augmentation will often help
+
+#### Common augmentation methods
+
+Mostly used
+
+* mirroring
+* random cropping (not perfect, but in practice it works well so long as your random crops are reasonably large subset of your original image)
+
+Less used
+
+* rotation
+* shearing
+* local warping..
+
+![data_augmentation_common_methods](data_augmentation_common_methods.png)
+
+* color shifting: make additions / reductions on image channels.
+    * makes new image that is less red/ more green /. ...
+    * in practice, the changing values are drawn from a distribution
+    * changes in color might be possible in the real world, so this makes your algo more robust vs that
+    * there are different ways of sampling RGB
+        * you can do PCA color augmentation
+        * ie. if your image is mainly purple, ie mainly has red and blue tints and very little green, PCA color augmentation will add and subtract alot from red and blue but less from green
+
+![data_augmentation_color_shifting](data_augmentation_color_shifting.png)
+
+#### Implementing distrotions during training
+
+* you have a stream of images coming from your harddisk
+* use one cpu thread to implement a distortion
+* many other distortions on other threads
+* pass as a minibatch to some other thing like GPU from training
+* commonly, data augmentation is implemented by taking 1 or more threads to do the distortions and then passing it to something else like gpu
+* typically the augmentation and gpu stuff can run in parallel
+
+![data_augmentation_implementing_distortions](data_augmentation_implementing_distortions.png)
+
+Once again, you can start with someone elses open source implementations.
+
+### State of Computer Vision
+
+* some unique stuff in cv when compared to other fields like speech ,...
+
+#### data vs hand-engineering
+
+* little-data vs lots of data
+* some problems have less data (object detection for example, its very expensive to annotate bboxes)
+* the more data you have the simpler your algorithm can be and this requires less hand engineering
+* the less data you have the more h4x you have :)
+* theres two sources of knowledge
+    * labeled data
+    * hand engineered features / architectures / ...
+* CV likes to learn really complex functions and it feels like theres not enough. This is why the state of CV has relied more on hand engineering, and why there are more complex networks.
+* historically there was not alot of data
+* if you have little data, use transfer learning!
+
+![stateofcv_data](stateofcv_data.png)
+
+#### if you do well on a benchmark, its easier to get a paper published.
+
+* Negative: sometimes researchers use less good techniques to get better results
+* Ensembles
+    * train several networks independently and average outputs ($\hat{y}$), probably will give you +1-2%
+    * this slows down your running time, which makes it never used in production
+* Multi-crop at test time
+    * run classifier on multiple versions of test image (with data augmentation) and average results
+    * for example take 10 crops and see what output is, run through classifier, ...
+* slows down runtime etc
+* in production its useless, but better on benchmarks / competitions
+
+![stateofcv_benchmark_tips](stateofcv_benchmark_tips.png)
+
+#### use open source code
+
+* use architectures of published networks
+* use OS implementations if possible
+* use pretrained models and finetune on your dataset
+
+![stateofcv_opensource](stateofcv_opensource.png)
+
