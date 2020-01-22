@@ -396,3 +396,55 @@ Once again, you can start with someone elses open source implementations.
 * Now use $\ssb{\widetilde{z}}{l}$ instead of $\ssb{z}{l}$ for later computations.
 * if you have a sigmoid activation function you dont maybe want mean / ... in order to take better advantage of the sigmoid function.
 
+
+### A note on layer parameters
+
+Random network from the week2 - keras tutorial
+
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_2 (InputLayer)         (None, 64, 64, 3)         0         
+_________________________________________________________________
+zero_padding2d_2 (ZeroPaddin (None, 70, 70, 3)         0         
+_________________________________________________________________
+conv0 (Conv2D)               (None, 68, 68, 32)        896       
+_________________________________________________________________
+bn0 (BatchNormalization)     (None, 68, 68, 32)        128       
+_________________________________________________________________
+activation_4 (Activation)    (None, 68, 68, 32)        0         
+_________________________________________________________________
+conv1 (Conv2D)               (None, 66, 66, 64)        18496     
+_________________________________________________________________
+bn1 (BatchNormalization)     (None, 66, 66, 64)        256       
+_________________________________________________________________
+activation_5 (Activation)    (None, 66, 66, 64)        0         
+_________________________________________________________________
+max_pool (MaxPooling2D)      (None, 33, 33, 64)        0         
+_________________________________________________________________
+conv2 (Conv2D)               (None, 31, 31, 128)       73856     
+_________________________________________________________________
+bn2 (BatchNormalization)     (None, 31, 31, 128)       512       
+_________________________________________________________________
+activation_6 (Activation)    (None, 31, 31, 128)       0         
+_________________________________________________________________
+max_pool2 (MaxPooling2D)     (None, 15, 15, 128)       0         
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 28800)             0         
+_________________________________________________________________
+fc1 (Dense)                  (None, 200)               5760200   
+_________________________________________________________________
+fc2 (Dense)                  (None, 1)                 201       
+
+Total params: 5,854,545
+Trainable params: 5,854,097
+Non-trainable params: 448
+
+if you look at the amount of parameters, 5.8mil. 5.7 mil stem from the stupid fully connected layer 28800-200 output nodes!
+
+## Extra 2
+
+- Very deep "plain" networks don't work in practice because they are hard to train due to vanishing gradients.  
+- The skip-connections help to address the Vanishing Gradient problem. They also make it easy for a ResNet block to learn an identity function. 
+- There are two main types of blocks: The identity block and the convolutional block. 
+- Very deep Residual Networks are built by stacking these blocks together.

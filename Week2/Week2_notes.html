@@ -444,5 +444,51 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 -68.267.847-113-73.952-191-73.952z'/></svg></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span></span></span></span></eq> instead of <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>z</mi><mrow><mo stretchy="false">[</mo><mi>l</mi><mo stretchy="false">]</mo></mrow></msup></mrow><annotation encoding="application/x-tex">\ssb{z}{l}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">[</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mclose mtight">]</span></span></span></span></span></span></span></span></span></span></span></span></eq> for later computations.</li>
 <li data-line="396" class="code-line">if you have a sigmoid activation function you dont maybe want mean / ... in order to take better advantage of the sigmoid function.</li>
 </ul>
+<h3 id="a-note-on-layer-parameters-1" data-line="399" class="code-line">A note on layer parameters</h3>
+<p data-line="401" class="code-line">Random network from the week2 - keras tutorial</p>
+<hr>
+<h1 id="layer-type-output-shape-param-1" data-line="404" class="code-line">Layer (type)                 Output Shape              Param #</h1>
+<p data-line="406" class="code-line">input_2 (InputLayer)         (None, 64, 64, 3)         0</p>
+<hr>
+<p data-line="408" class="code-line">zero_padding2d_2 (ZeroPaddin (None, 70, 70, 3)         0</p>
+<hr>
+<p data-line="410" class="code-line">conv0 (Conv2D)               (None, 68, 68, 32)        896</p>
+<hr>
+<p data-line="412" class="code-line">bn0 (BatchNormalization)     (None, 68, 68, 32)        128</p>
+<hr>
+<p data-line="414" class="code-line">activation_4 (Activation)    (None, 68, 68, 32)        0</p>
+<hr>
+<p data-line="416" class="code-line">conv1 (Conv2D)               (None, 66, 66, 64)        18496</p>
+<hr>
+<p data-line="418" class="code-line">bn1 (BatchNormalization)     (None, 66, 66, 64)        256</p>
+<hr>
+<p data-line="420" class="code-line">activation_5 (Activation)    (None, 66, 66, 64)        0</p>
+<hr>
+<p data-line="422" class="code-line">max_pool (MaxPooling2D)      (None, 33, 33, 64)        0</p>
+<hr>
+<p data-line="424" class="code-line">conv2 (Conv2D)               (None, 31, 31, 128)       73856</p>
+<hr>
+<p data-line="426" class="code-line">bn2 (BatchNormalization)     (None, 31, 31, 128)       512</p>
+<hr>
+<p data-line="428" class="code-line">activation_6 (Activation)    (None, 31, 31, 128)       0</p>
+<hr>
+<p data-line="430" class="code-line">max_pool2 (MaxPooling2D)     (None, 15, 15, 128)       0</p>
+<hr>
+<p data-line="432" class="code-line">flatten_2 (Flatten)          (None, 28800)             0</p>
+<hr>
+<p data-line="434" class="code-line">fc1 (Dense)                  (None, 200)               5760200</p>
+<hr>
+<p data-line="436" class="code-line">fc2 (Dense)                  (None, 1)                 201</p>
+<p data-line="438" class="code-line">Total params: 5,854,545
+Trainable params: 5,854,097
+Non-trainable params: 448</p>
+<p data-line="442" class="code-line">if you look at the amount of parameters, 5.8mil. 5.7 mil stem from the stupid fully connected layer 28800-200 output nodes!</p>
+<h2 id="extra-2-1" data-line="444" class="code-line">Extra 2</h2>
+<ul>
+<li data-line="446" class="code-line">Very deep &quot;plain&quot; networks don't work in practice because they are hard to train due to vanishing gradients.</li>
+<li data-line="447" class="code-line">The skip-connections help to address the Vanishing Gradient problem. They also make it easy for a ResNet block to learn an identity function.</li>
+<li data-line="448" class="code-line">There are two main types of blocks: The identity block and the convolutional block.</li>
+<li data-line="449" class="code-line">Very deep Residual Networks are built by stacking these blocks together.</li>
+</ul>
 
 </body></html>
