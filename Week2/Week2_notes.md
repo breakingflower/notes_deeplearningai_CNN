@@ -385,3 +385,14 @@ Once again, you can start with someone elses open source implementations.
 
 ![stateofcv_opensource](stateofcv_opensource.png)
 
+## Batch Normalization
+
+* normalizing can speed up gd, due to the gradients being better distributed.
+* in logistic regression, we only have one thing to normalize: the input
+* in deeper networks it could also be effective to normalize the hidden units
+* Given some intermediate value in a neural network $\ssb{z}{l}$, compute the mean by $\mu =\frac{1}{m}\sum_{i} z^{(i)}$ and the variance $\sigma^2 = \frac{1}{m}\sum_i (z_i - \mu)^2$. Then, normalize $z_{norm}^{(i)} = \frac{z^{(i)}-\mu}{\sqrt{\sigma^2 + \epsilon}}$. Now they have mean 0 and variance 1. 
+* We dont always want hidden units to have this distribution, so instead we compute $\widetilde{z}^{(i)} = \gamma z^{(i)}_{norm} + \beta$ where $\gamma, \beta$ are learnable parameters. 
+* If $\gamma = \sqrt{\sigma^2 + \epsilon}$, and $\beta=\mu$, then the equation is inverted, and so $\widetilde{z}^{(i)} = z^{(i)}$ essentially the identitiy function.
+* Now use $\ssb{\widetilde{z}}{l}$ instead of $\ssb{z}{l}$ for later computations.
+* if you have a sigmoid activation function you dont maybe want mean / ... in order to take better advantage of the sigmoid function.
+
