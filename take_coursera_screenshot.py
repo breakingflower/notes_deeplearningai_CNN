@@ -13,7 +13,7 @@ if __name__=="__main__":
     
     # hardcoded bbox for when you have two
     # screens and its in the left screen
-    bbox = (364, 322, 1290, 900)
+    bbox = (364, 322, 1290, 845)
 
     # take image
     im = ImageGrab.grab(bbox=bbox)
